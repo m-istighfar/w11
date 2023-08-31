@@ -1,0 +1,628 @@
+openapi: 3.0.0
+info:
+  title: w11 2
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+tags:
+  - name: auth
+  - name: admin
+  - name: author
+  - name: student
+  - name: learning-path
+paths:
+  /auth/register:
+    post:
+      tags:
+        - auth
+      summary: regist
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: author2
+                password: '123456'
+                email: johnz@example.com
+                role: author
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /auth/login:
+    post:
+      tags:
+        - auth
+      summary: login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: adsz
+                password: '123456'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/dashboard:
+    get:
+      tags:
+        - admin
+      summary: dashboard Copy
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/listusers:
+    get:
+      tags:
+        - admin
+      summary: getuser
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/createUser:
+    post:
+      tags:
+        - admin
+      summary: createuser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: author3
+                password: '123456'
+                email: nasdr@eadsple.com
+                role: author
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/updateUser/64ee9f7bb008417c70770263:
+    put:
+      tags:
+        - admin
+      summary: updateuser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: adsz
+                email: das@esadsda.com
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/deleteuser/64ed2d7beb214533243fb72a:
+    delete:
+      tags:
+        - admin
+      summary: deleteuser
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/assignRole/64ed2d79eb214533243fb728:
+    post:
+      tags:
+        - admin
+      summary: assignrole
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                id: 64ee9f7bb008417c70770263
+                role: student
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/createcourse:
+    post:
+      tags:
+        - admin
+      summary: createcourse
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: dsaads
+                thumbnail: adsdas
+                description: dsadsa
+                authorId: 6143a2308178fed73050e601
+                creationDate: '2023-08-28T12:34:56.789Z'
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/updatecourse/64edb324581a78599638281d:
+    put:
+      tags:
+        - admin
+      summary: updatecourse
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: dsasad
+                thumbnail: adsdsa
+                description: adsdsa
+                authorId: 6143a2308178fed73050e601
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/deletecourse/64edb324581a78599638281d:
+    delete:
+      tags:
+        - admin
+      summary: deletecourse
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /admin/listcourses:
+    get:
+      tags:
+        - admin
+      summary: listcourse
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: searchTerm
+          in: query
+          schema:
+            type: string
+        - name: sortBy
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /author/dashboard:
+    get:
+      tags:
+        - author
+      summary: dashboard Copy
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /author/createcourse:
+    post:
+      tags:
+        - author
+      summary: createcourse Copy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: adsdsa
+                thumbnail: ssaddasood
+                description: dasdsa
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /author/listcourses:
+    get:
+      tags:
+        - author
+      summary: listcourse Copy
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /author/listowncourses:
+    get:
+      tags:
+        - author
+      summary: listowncourse
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /author/updateownedcourse/64edbea701118d7d19a40301:
+    put:
+      tags:
+        - author
+      summary: updatecourse Copy
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: dsasad
+                thumbnail: adsdsa
+                description: adsdsa
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /author/deleteownedcourse/64edbabfc26070e5508f334e:
+    delete:
+      tags:
+        - author
+      summary: deletecourse Copy
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /author/listenrollrequests:
+    get:
+      tags:
+        - author
+      summary: get enroll
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /author/updateEnrollmentStatus/64edc68ec6ed962ca6843d49:
+    post:
+      tags:
+        - author
+      summary: updatestatusenroll
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: accepted
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /author/updateprofile:
+    put:
+      tags:
+        - author
+      summary: edit profile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: authoredit
+                email: sdasa@gmail.com
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /student/dashboard:
+    get:
+      tags:
+        - student
+      summary: dashboard
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /student/viewcourse:
+    get:
+      tags:
+        - student
+      summary: listcourse Copy 2
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /student//sendEnrollRequest:
+    post:
+      tags:
+        - student
+      summary: send enrol
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                courseId: 64edbea701118d7d19a40301
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /student/readEnrolledCourseContent:
+    get:
+      tags:
+        - student
+      summary: view enrol list
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /student/unenrollFromCourse:
+    post:
+      tags:
+        - student
+      summary: unnroll
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                courseId: 64edbea701118d7d19a40301
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /student/markCourseCompleted:
+    post:
+      tags:
+        - student
+      summary: mark complete
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                courseId: 64edbea701118d7d19a40301
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /student//updateProfile:
+    put:
+      tags:
+        - student
+      summary: update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: studentedit
+                email: sdasa@gmail.com
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /student/addreview/64edbea701118d7d19a40301:
+    post:
+      tags:
+        - student
+      summary: review
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                studentId: 61234abcde12345678901234
+                rating: 4.5
+                review: >-
+                  This course was very informative and well-structured. Highly
+                  recommend!
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /student/progress/64ee3deea931f652d78b3d43:
+    get:
+      tags:
+        - student
+      summary: get progress
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    put:
+      tags:
+        - student
+      summary: update progress
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                completion: 10
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /learningPaths/list:
+    get:
+      tags:
+        - learning-path
+      summary: get list
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /learningPaths/create:
+    post:
+      tags:
+        - learning-path
+      summary: create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: Web Development Path
+                description: A comprehensive guide to becoming a web developer.
+                courses:
+                  - 64edbea701118d7d19a40301
+                  - 64ee2daf1dec6e75cb0814d4
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /learningPaths/update/64ee95e450bf8e1e84d133fe:
+    put:
+      tags:
+        - learning-path
+      summary: edit learning
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                title: AAzzz
+                description: An advanced guide for professional web developers.
+                courses:
+                  - 64ee3deea931f652d78b3d43
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /learningPaths/delete/64ee95e750bf8e1e84d13400:
+    delete:
+      tags:
+        - learning-path
+      summary: delete elarning
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /learningPaths/addcourse:
+    post:
+      tags:
+        - learning-path
+      summary: add course to path
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                pathId: 64ee9b49d86430bd37fdfffb
+                courseId: 64edbea701118d7d19a40301
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
