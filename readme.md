@@ -1,4 +1,4 @@
-# My E-Learning App
+# Simple E-Learning Platform API
 
 ## Overview
 
