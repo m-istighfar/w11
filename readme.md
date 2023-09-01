@@ -7,17 +7,13 @@ This is a simple e-learning platform API built with Node.js and Express, focusin
 ## Table of Contents
 
 - [Overview](#overview)
+- [Key Features](#key-features)
+- [Tech Stack](#tech-stack)
+- [Database Setup and Schema](#database-setup-and-schema)
+- [Database Relationships](#database-relationships)
 - [Installation](#installation)
 - [Environment Variables](#environment-variables)
-- [Running the Application](#running-the-application)
-- [API Documentation](#api-documentation)
-- [Features](#features)
-  - [Admin](#admin)
-  - [Author](#author)
-  - [Student](#student)
-- [Middleware](#middleware)
-- [Routes](#routes)
-- [Database](#database)
+- [API Endpoints](#api-endpoints)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -68,50 +64,6 @@ This is a simple e-learning platform API built with Node.js and Express, focusin
 - **Swagger-UI-Express**: For rendering API documentation.
 - **JSON Web Token (JWT)**: For authentication.
 - **dotenv**: For environment variable management.quest.
-
-## Installation
-
-Follow these steps to get the API up and running:
-
-### Step 1: Clone the repository
-
-```bash
-git clone https://github.com/your-repo/learning-platform-api.git
-```
-
-### Step 2: Navigate to the project folder
-
-```bash
-cd learning-platform-api
-```
-
-### Step 3: Install Dependencies
-
-```bash
-npm install
-```
-
-### Step 4: Environment Setup
-
-Create a `.env` file in the root directory and populate it:
-
-```env
-PORT=3000
-DATABASE_URL=mongodb://localhost:27017/learning_platform
-JWT_SECRET=mysecret
-```
-
-### Step 5: Start the server
-
-```bash
-npm start
-```
-
-Visit `http://localhost:PORT/api-docs` to view the API documentation via Swagger
-
-## API Endpoints
-
-For a complete list of API Endpoints and their descriptions, please check the Swagger documentation at `/api-docs`.
 
 ## Database Setup and Schema
 
@@ -203,3 +155,66 @@ The Learning Platform API utilizes MongoDB, a NoSQL database, to store its data.
 
 - A `Progress` document tracks the learning progress of a `User` in a particular `Course`.
 - `Progress` is linked to `User` via `studentId` and to `Course` via `courseId`.
+
+## Installation
+
+### Step 1: Clone the Repository
+
+```bash
+git clone https://github.com/your-repo/learning-platform-api.git
+```
+
+### Step 2: Navigate to Project Folder
+
+```bash
+cd learning-platform-api
+```
+
+### Step 3: Install Dependencies
+
+```bash
+npm install
+```
+
+### Step 4: Environment Setup
+
+Create a `.env` file:
+
+```env
+PORT=3000
+DATABASE_URL=mongodb://localhost:27017/learning_platform
+JWT_SECRET=mysecret
+```
+
+### Step 5: Start the Server
+
+```bash
+npm start
+```
+
+Visit `http://localhost:3000/api-docs` for API documentation.
+
+## Environment Variables
+
+| Variable       | Description                          |
+| -------------- | ------------------------------------ |
+| `PORT`         | The port number to run the server on |
+| `DATABASE_URL` | MongoDB connection string            |
+| `JWT_SECRET`   | Secret key for JSON Web Token        |
+
+## API Endpoints
+
+For a complete list of API Endpoints and their descriptions, please check the Swagger documentation at `/api-docs`.
+
+## Contributing
+
+Contributions are welcome. Please follow the standard Git workflow:
+
+1. Fork the repository.
+2. Create a new branch.
+3. Add your features or bug fixes.
+4. Create a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
