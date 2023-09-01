@@ -13,6 +13,7 @@ This is a simple e-learning platform API built with Node.js and Express, focusin
 - [Database Relationships](#database-relationships)
 - [Installation](#installation)
 - [Environment Variables](#environment-variables)
+- [Testing and Faker.js Integration](#testing-and-fakerjs-integration)
 - [API Endpoints](#api-endpoints)
 - [Contributing](#contributing)
 - [License](#license)
@@ -201,6 +202,34 @@ Visit `http://localhost:3000/api-docs` for API documentation.
 | `PORT`         | The port number to run the server on |
 | `DATABASE_URL` | MongoDB connection string            |
 | `JWT_SECRET`   | Secret key for JSON Web Token        |
+
+## Testing and Faker.js Integration
+
+For generating mock data during testing or development, this project is integrated with [Faker.js](https://github.com/Marak/Faker.js). Faker.js allows you to generate a whole bunch of fake data for testing, seeding databases, and more.
+
+### Installing Faker.js
+
+If you haven't already installed Faker.js, you can add it to your project by running:
+
+```bash
+npm install faker --save-dev
+```
+
+### How to Run the Faker.js Script
+
+#### Step 1: Navigate to the Project Folder
+
+```bash
+cd learning-platform-api
+```
+
+#### Step 2: Run the Faker.js Script
+
+To run the Faker.js script and populate your MongoDB database with mock data, execute the following command:
+
+```bash
+node .\helper\generateFakeData.js
+```
 
 ## API Endpoints
 
