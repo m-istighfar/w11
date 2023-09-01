@@ -93,7 +93,6 @@ exports.readEnrolledCourseContent = async (req, res) => {
 
     res.status(200).json(courses);
   } catch (error) {
-    console.error("Error:", error);
     res
       .status(500)
       .json({ error: "An error occurred while fetching the course content" });
