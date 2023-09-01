@@ -27,7 +27,7 @@ exports.listEnrollRequests = async (req, res) => {
 exports.updateEnrollmentStatus = async (req, res) => {
   const { status } = req.body;
   if (!["accepted", "rejected"].includes(status)) {
-    return res.status(400).send("Invalid status.");
+    return res.status(400).json("Invalid status.");
   }
 
   try {
@@ -42,12 +42,12 @@ exports.updateEnrollmentStatus = async (req, res) => {
     if (!enrollment) {
       return res
         .status(404)
-        .send("Enrollment request not found or not pending.");
+        .json("Enrollment request not found or not pending");
     }
 
-    res.status(200).send(`Enrollment ${status.toLowerCase()}.`);
+    res.status(200).json(`Enrollment ${status.toLowerCase()}.`);
   } catch (err) {
-    res.status(500).send(err.message);
+    res.status(500).json(err.message);
   }
 };
 

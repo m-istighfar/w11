@@ -234,7 +234,7 @@ paths:
           description: Internal Server Error
           content:
             application/json: {}           
-  /admin/assignRole/{id}:
+  /admin/assignRole:
     post:
       tags:
         - admin > user
@@ -249,12 +249,6 @@ paths:
                 role: student
       security:
         - bearerAuth: []
-      parameters:
-        - name: id
-          in: path
-          schema:
-            type: string
-          required: true
       responses:
         '200':
           description: Successful response

@@ -106,7 +106,7 @@ exports.assignRole = async (req, res) => {
 
   try {
     const user = await User.findByIdAndUpdate(id, { role }, { new: true });
-    res.status(200).json(user);
+    res.status(200).json({ message: "succes", user });
   } catch (error) {
     res
       .status(500)
@@ -124,7 +124,7 @@ exports.updateProfile = async (req, res) => {
       { username, email },
       { new: true }
     );
-    res.status(200).json(updatedUser);
+    res.status(200).json({ message: "succes", updatedUser });
   } catch (error) {
     res
       .status(500)
