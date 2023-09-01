@@ -1,4 +1,8 @@
 const Progress = require("../models/progress");
+const Enrollment = require("../models/enrollment");
+const Course = require("../models/course");
+const LearningPath = require("../models/learningpath");
+const User = require("../models/user");
 
 exports.getProgress = async (req, res) => {
   try {
@@ -31,8 +35,19 @@ exports.updateProgress = async (req, res) => {
     } else {
       progress.completion = req.body.completion;
     }
-
     await progress.save();
+
+    if (progress.completion === 100) {
+      const enrollment = await Enrollment.findOne({
+        student: req.user.id,
+        course: req.params.courseId,
+      });
+
+      if (enrollment) {
+        enrollment.status = "complete";
+        await enrollment.save();
+      }
+    }
 
     res.status(200).send(progress);
   } catch (err) {

@@ -202,6 +202,18 @@ exports.addReview = async (req, res) => {
     const courseId = req.params.courseId;
     const { studentId, rating, review } = req.body;
 
+    const enrollment = await Enrollment.findOne({
+      courseId,
+      studentId,
+      status: "completed",
+    });
+
+    if (!enrollment) {
+      return res.status(403).json({
+        error: "Not enrolled in this course or enrollment not completed",
+      });
+    }
+
     const course = await Course.findById(courseId);
 
     if (!course) {
@@ -221,9 +233,9 @@ exports.addReview = async (req, res) => {
     course.ratingAverage = totalRatings / course.reviews.length;
 
     await course.save();
-    res.status(201).send("Review added and average rating updated.");
+    res.status(201).json("Review added and average rating updated.");
   } catch (err) {
     console.error("Error:", err);
-    res.status(500).send(err.message);
+    res.status(500).json(err.message);
   }
 };
