@@ -21,7 +21,6 @@ router.put("/updateProfile", userController.updateProfile);
 router.get("/listowncourses", courseController.listOwnCourses);
 router.get("/dashboard", DashboardAuthorController.getAuthorDashboardData);
 
-//tambah LP
 router.get("/listLearningPaths", learningPathController.listLearningPaths);
 router.post("/addCoursetoPath", learningPathController.addCourseToPath);
 router.delete(

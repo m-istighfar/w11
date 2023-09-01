@@ -18,7 +18,6 @@ exports.createUser = async (req, res) => {
   const { username, email, password, role } = req.body;
 
   try {
-    // Check if the username or email already exists
     const existingUserByUsername = await User.findOne({ username });
     const existingUserByEmail = await User.findOne({ email });
 
@@ -30,7 +29,6 @@ exports.createUser = async (req, res) => {
       return res.status(400).json({ error: "Email already exists" });
     }
 
-    // If we're here, it means the username and email are unique
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new User({
       username,
@@ -75,29 +73,20 @@ exports.deleteUser = async (req, res) => {
       return res.status(404).json({ error: "User not found" });
     }
 
-    // Fetch courses authored by the user
     const authoredCourses = await Course.find({ authorId: id });
 
-    // Get IDs of the authored courses
     const courseIds = authoredCourses.map((course) => course._id);
 
-    // Delete all courses created by this user
     await Course.deleteMany({ authorId: id });
 
-    // Delete all enrollments related to this user
     await Enrollment.deleteMany({ studentId: id });
 
-    // Delete all progress records related to this user
     await Progress.deleteMany({ studentId: id });
 
-    // Remove courses authored by the user from all learning paths
     await LearningPath.updateMany(
       { courses: { $in: courseIds } },
       { $pullAll: { courses: courseIds } }
     );
-
-    // Optionally, delete learning paths that have become empty
-    // await LearningPath.deleteMany({ courses: { $size: 0 } });
 
     await User.findByIdAndDelete(id);
 
@@ -105,7 +94,7 @@ exports.deleteUser = async (req, res) => {
       .status(200)
       .json({ message: "User and related records deleted successfully" });
   } catch (error) {
-    console.error("Error:", error); // Log the error for debugging
+    console.error("Error:", error);
     res
       .status(500)
       .json({ error: "An error occurred while deleting the user" });

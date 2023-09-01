@@ -11,27 +11,25 @@ async function generateFakeUsers(count) {
   const fakeUsers = [];
 
   for (let i = 0; i < count - 1; i++) {
-    // Generate count - 1 non-admin users
-    const password = "123456"; // Set the actual password
-    const hashedPassword = await bcrypt.hash(password, 10); // Hash the password
+    const password = "123456";
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     const fakeUser = {
       username: faker.internet.userName(),
       email: faker.internet.email(),
-      password: hashedPassword, // Use the hashed password
+      password: hashedPassword,
       role: faker.random.arrayElement(["author", "student"]),
     };
     fakeUsers.push(fakeUser);
   }
 
-  // Add the admin user separately
-  const adminPassword = "123456"; // Set the actual password for the admin
-  const hashedAdminPassword = await bcrypt.hash(adminPassword, 10); // Hash the admin password
+  const adminPassword = "123456";
+  const hashedAdminPassword = await bcrypt.hash(adminPassword, 10);
 
   const adminUser = {
-    username: "admin", // Set the admin username
-    email: "admin@example.com", // Set the admin email
-    password: hashedAdminPassword, // Use the hashed admin password
+    username: "admin",
+    email: "admin@example.com",
+    password: hashedAdminPassword,
     role: "admin",
   };
   fakeUsers.push(adminUser);
@@ -176,7 +174,7 @@ async function generateFakeLearningPaths(courses) {
 
 async function generateFakeProgressRecords(courses, users) {
   const fakeProgressRecords = [];
-  const studentUsers = users.filter((user) => user.role === "student"); // Only include users with the "student" role
+  const studentUsers = users.filter((user) => user.role === "student");
 
   courses.forEach((course) => {
     studentUsers.forEach((student) => {

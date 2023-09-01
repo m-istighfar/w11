@@ -6,6 +6,7 @@ const {
   generateFakeLearningPaths,
   generateFakeProgressRecords,
 } = require("../helper/helper");
+
 const clearDatabase = require("./clearDatabase");
 
 async function generateFakeData() {
@@ -23,7 +24,6 @@ async function generateFakeData() {
     const numFakeCourses = 50;
     const courses = await generateFakeCourses(numFakeCourses, users);
 
-    const numFakeEnrollments = 10;
     await generateFakeEnrollments(courses, users);
 
     await generateFakeLearningPaths(courses);
@@ -35,5 +35,7 @@ async function generateFakeData() {
     console.error("Error generating fake data:", error);
   }
 }
+
+generateFakeData();
 
 module.exports = generateFakeData;

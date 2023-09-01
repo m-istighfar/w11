@@ -5,18 +5,14 @@ const Progress = require("../models/progress");
 
 exports.listCourses = async (req, res) => {
   try {
-    // Optional query parameters for search term, sorting, and order
     const { searchTerm, sortBy, order } = req.query;
 
-    // Build the query object
     let queryObj = {};
 
-    // Handle search term if it exists
     if (searchTerm) {
       queryObj.title = new RegExp(searchTerm, "i");
     }
 
-    // Execute the query and handle sorting if it exists
     let query = Course.find(
       queryObj,
       "title description thumbnail authorId creationDate ratingAverage"
@@ -82,44 +78,36 @@ exports.deleteCourse = async (req, res) => {
       return res.status(404).json({ error: "Course not found" });
     }
 
-    // Delete all enrollments related to this course
     await Enrollment.deleteMany({ courseId: id });
 
-    // Remove this course from all learning paths
     await LearningPath.updateMany({ courses: id }, { $pull: { courses: id } });
 
-    // Delete all progress records related to this course
     await Progress.deleteMany({ courseId: id });
 
-    // Delete the course itself
     await Course.findByIdAndDelete(id);
 
     res
       .status(200)
       .json({ message: "Course and related records deleted successfully" });
   } catch (error) {
-    console.error("Error:", error); // Log the error for debugging
+    console.error("Error:", error);
     res
       .status(500)
       .json({ error: "An error occurred while deleting the course" });
   }
 };
 
-// author
 exports.listOwnCourses = async (req, res) => {
   try {
-    const authorId = req.user.id; // Assuming userId is set in middleware
+    const authorId = req.user.id;
     const { searchTerm, sortBy } = req.query;
 
-    // Build the query object
     let queryObj = { authorId };
 
-    // Handle search term if it exists
     if (searchTerm) {
       queryObj.title = new RegExp(searchTerm, "i");
     }
 
-    // Execute the query and handle sorting if it exists
     let query = Course.find(
       queryObj,
       "title description thumbnail creationDate reviews"
@@ -183,7 +171,6 @@ exports.updateOwnCourse = async (req, res) => {
   }
 };
 
-// Delete course
 exports.deleteOwnCourse = async (req, res) => {
   const { id } = req.params;
   const authorId = req.user.id;
@@ -193,27 +180,22 @@ exports.deleteOwnCourse = async (req, res) => {
 
     if (!course) return res.status(403).json({ error: "Permission denied" });
 
-    // Delete all enrollments related to this course
     await Enrollment.deleteMany({ courseId: id });
 
-    // Remove this course from all learning paths
     await LearningPath.updateMany({ courses: id }, { $pull: { courses: id } });
 
-    // Delete all progress records related to this course
     await Progress.deleteMany({ courseId: id });
 
     res
       .status(200)
       .json({ message: "Course and related records deleted successfully" });
   } catch (error) {
-    console.error("Error:", error); // Log the error for debugging
+    console.error("Error:", error);
     res
       .status(500)
       .json({ error: "An error occurred while deleting the course" });
   }
 };
-
-// khusus student
 
 exports.addReview = async (req, res) => {
   try {
@@ -232,7 +214,6 @@ exports.addReview = async (req, res) => {
       review,
     });
 
-    // Update average rating
     const totalRatings = course.reviews.reduce(
       (acc, curr) => acc + curr.rating,
       0
@@ -242,7 +223,7 @@ exports.addReview = async (req, res) => {
     await course.save();
     res.status(201).send("Review added and average rating updated.");
   } catch (err) {
-    console.error("Error:", err); // Log the error for debugging
+    console.error("Error:", err);
     res.status(500).send(err.message);
   }
 };

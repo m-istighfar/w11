@@ -16,7 +16,6 @@ const adminRoutes = require("./routes/adminRoutes");
 const authorRoutes = require("./routes/authorRoutes");
 const studentRoutes = require("./routes/studentRoutes");
 
-const generateFakeData = require("./helper/generateFakeData");
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
@@ -28,8 +27,6 @@ const swaggerDocument = yaml.parse(file);
 app.use(databaseMiddleware);
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
-// generateFakeData();
 
 app.use("/auth", authRoutes);
 app.use(

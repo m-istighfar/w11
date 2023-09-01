@@ -8,11 +8,9 @@ exports.listEnrollRequests = async (req, res) => {
   const authorId = req.user.id;
 
   try {
-    // Fetch all course IDs created by this author
     const courses = await Course.find({ authorId }, "_id");
     const courseIds = courses.map((course) => course._id);
 
-    // Fetch all pending enrollments for these courses
     const enrollments = await Enrollment.find({
       status: "pending",
       courseId: { $in: courseIds },
@@ -53,8 +51,6 @@ exports.updateEnrollmentStatus = async (req, res) => {
   }
 };
 
-// studnet
-
 exports.sendEnrollRequest = async (req, res) => {
   const { courseId } = req.body;
   const studentId = req.user.id;
@@ -84,7 +80,7 @@ exports.readEnrolledCourseContent = async (req, res) => {
     }).populate(
       "courseId",
       "title description thumbnail authorId creationDate ratingAverage"
-    ); // populate to fetch full course data
+    );
 
     if (enrollments.length === 0) {
       return res.status(403).json({
@@ -93,12 +89,11 @@ exports.readEnrolledCourseContent = async (req, res) => {
       });
     }
 
-    // Extract just the course information from the enrollments
     const courses = enrollments.map((enrollment) => enrollment.courseId);
 
     res.status(200).json(courses);
   } catch (error) {
-    console.error("Error:", error); // Log the error for debugging
+    console.error("Error:", error);
     res
       .status(500)
       .json({ error: "An error occurred while fetching the course content" });
@@ -109,7 +104,6 @@ exports.unenrollCourse = async (req, res) => {
   const { courseId } = req.body;
   const studentId = req.user.id;
   try {
-    // Unenroll the student from the course by deleting the enrollment record
     const deletedEnrollment = await Enrollment.findOneAndDelete({
       courseId,
       studentId,
@@ -119,7 +113,6 @@ exports.unenrollCourse = async (req, res) => {
       return res.status(404).json({ message: "Enrollment not found" });
     }
 
-    // Delete the student's progress record for this course
     await Progress.findOneAndDelete({ courseId, studentId });
 
     res.status(200).json({
@@ -127,7 +120,7 @@ exports.unenrollCourse = async (req, res) => {
         "Successfully unenrolled from the course and related records deleted",
     });
   } catch (error) {
-    console.error("Error:", error); // Log the error for debugging
+    console.error("Error:", error);
     res
       .status(500)
       .json({ error: "An error occurred while unenrolling from the course" });

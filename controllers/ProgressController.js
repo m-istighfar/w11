@@ -1,6 +1,5 @@
-const Progress = require("../models/progress"); // Import the Progress model
+const Progress = require("../models/progress");
 
-// Get progress for a specific course
 exports.getProgress = async (req, res) => {
   try {
     const progress = await Progress.findOne({
@@ -16,7 +15,6 @@ exports.getProgress = async (req, res) => {
   }
 };
 
-// Update or create progress for a specific course
 exports.updateProgress = async (req, res) => {
   try {
     let progress = await Progress.findOne({
@@ -24,7 +22,6 @@ exports.updateProgress = async (req, res) => {
       courseId: req.params.courseId,
     });
 
-    // If no existing progress record, create one
     if (!progress) {
       progress = new Progress({
         studentId: req.user.id,
@@ -32,7 +29,6 @@ exports.updateProgress = async (req, res) => {
         completion: req.body.completion,
       });
     } else {
-      // Update the completion percentage
       progress.completion = req.body.completion;
     }
 
@@ -61,7 +57,6 @@ exports.markCourseAsCompleted = async (req, res) => {
       });
     }
 
-    // Update the Progress record for this course to mark it as completed (100%)
     await Progress.findOneAndUpdate(
       { courseId, studentId },
       { completion: 100 },
@@ -70,7 +65,7 @@ exports.markCourseAsCompleted = async (req, res) => {
 
     res.status(200).json(enrollment);
   } catch (error) {
-    console.error("Error:", error); // Log the error for debugging
+    console.error("Error:", error);
     res.status(500).json({
       error: "An error occurred while marking the course as completed",
     });

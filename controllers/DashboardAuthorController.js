@@ -1,7 +1,6 @@
 const Course = require("../models/course");
 const Enrollment = require("../models/enrollment");
 
-// Fetch owned courses and their IDs
 exports.getAuthorDashboardData = async (req, res) => {
   try {
     if (req.user.role !== "author") {
@@ -12,7 +11,6 @@ exports.getAuthorDashboardData = async (req, res) => {
       "title thumbnail description creationDate reviews ratingAverage"
     );
 
-    // Create the ownedCourseIds array without using map
     const ownedCourseIds = [];
     ownedCourses.forEach((course) => ownedCourseIds.push(course._id));
 
@@ -31,7 +29,6 @@ exports.getAuthorDashboardData = async (req, res) => {
         "courseId",
         "title thumbnail description creationDate ratingAverage"
       );
-    // .populate("studentId");
 
     const dashboardData = {
       authorId: req.user.id,

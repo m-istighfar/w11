@@ -1,21 +1,15 @@
-// controllers/LearningPathController.js
 const LearningPath = require("../models/learningpath");
 const Course = require("../models/course");
 
-// Create a new learning path
 exports.createLearningPath = async (req, res) => {
   try {
-    // Admin or Author can create
     if (["admin"].includes(req.user.role)) {
       const { title, description, courses } = req.body;
-
-      // const createdBy = req.user.id;
 
       const newLearningPath = new LearningPath({
         title,
         description,
         courses,
-        // createdBy,
       });
 
       await newLearningPath.save();
@@ -29,10 +23,8 @@ exports.createLearningPath = async (req, res) => {
   }
 };
 
-// List all learning paths
 exports.listLearningPaths = async (req, res) => {
   try {
-    // All roles can view
     const learningPaths = await LearningPath.find().populate(
       "courses",
       "title thumbnail description authorId creationDate"
@@ -43,7 +35,6 @@ exports.listLearningPaths = async (req, res) => {
   }
 };
 
-// Update an existing learning path cuma admin
 exports.updateLearningPath = async (req, res) => {
   try {
     const { id } = req.params;
@@ -66,7 +57,6 @@ exports.updateLearningPath = async (req, res) => {
   }
 };
 
-// Delete a learning path
 exports.deleteLearningPath = async (req, res) => {
   try {
     const { id } = req.params;
@@ -74,7 +64,6 @@ exports.deleteLearningPath = async (req, res) => {
     console.log(id);
 
     const learningPath = await LearningPath.findById(id);
-    // populate("createdBy");
 
     console.log(learningPath);
 
@@ -89,7 +78,6 @@ exports.deleteLearningPath = async (req, res) => {
   }
 };
 
-// Add a course to an existing learning path
 exports.addCourseToPath = async (req, res) => {
   try {
     const { pathId, courseId } = req.body;
@@ -100,9 +88,7 @@ exports.addCourseToPath = async (req, res) => {
       return res.status(404).send("Learning path not found");
     }
 
-    // Assuming 'author' is the role that can only add their own course
     if (req.user.role === "author") {
-      // Check if the author owns the course
       const course = await Course.findById(courseId);
       if (!course || course.author !== req.user._id) {
         return res.status(403).send("You can only add your own courses");

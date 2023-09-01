@@ -1,5 +1,3 @@
-// models/LearningPath.js
-
 const mongoose = require("mongoose");
 
 const learningPathSchema = new mongoose.Schema({
@@ -11,10 +9,6 @@ const learningPathSchema = new mongoose.Schema({
       ref: "Course",
     },
   ],
-  // createdBy: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: "User",
-  // },
 });
 
 module.exports = mongoose.model("LearningPath", learningPathSchema);
