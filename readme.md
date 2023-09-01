@@ -166,7 +166,7 @@ The Learning Platform API utilizes MongoDB, a NoSQL database, to store its data.
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/your-repo/learning-platform-api.git
+git clone https://github.com/RevoU-FSSE-2/week-11-m-istighfar.git
 ```
 
 ### Step 2: Navigate to Project Folder
