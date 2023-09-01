@@ -1,4 +1,4 @@
-# Simple E-Learning Platform API
+# Simple E-Learning Platform
 
 ## Overview
 

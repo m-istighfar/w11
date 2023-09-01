@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: w11 3 Copy
+  title: Simple e-learning platform API
   version: 1.0.0
 servers:
   - url: http://localhost:3000
@@ -49,6 +49,14 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}
   /auth/login:
     post:
       tags:
@@ -67,6 +75,14 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}
   /admin/dashboard:
     get:
       tags:
@@ -79,6 +95,19 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}
+          
   /admin/listusers:
     get:
       tags:
@@ -91,6 +120,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}            
   /admin/createUser:
     post:
       tags:
@@ -113,6 +154,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}           
   /admin/updateUser/{id}:
     put:
       tags:
@@ -139,6 +192,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}           
   /admin/deleteuser/{id}:
     delete:
       tags:
@@ -157,6 +222,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}           
   /admin/assignRole/{id}:
     post:
       tags:
@@ -183,6 +260,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}            
   /admin/createcourse:
     post:
       tags:
@@ -206,6 +295,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}           
   /admin/updatecourse/{id}:
     put:
       tags:
@@ -234,6 +335,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}           
   /admin/deletecourse/{id}:
     delete:
       tags:
@@ -252,6 +365,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}        
   /admin/listcourses:
     get:
       tags:
@@ -277,6 +402,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}           
   /admin/createLearningPath:
     post:
       tags:
@@ -300,6 +437,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}
   /admin/listLearningPaths:
     get:
       tags:
@@ -312,6 +461,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}           
   /admin/updateLearningPath/{id}:
     put:
       tags:
@@ -340,6 +501,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}           
   /admin/deleteLearningPath/{id}:
     delete:
       tags:
@@ -358,6 +531,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}           
   /admin/addCourse:
     post:
       tags:
@@ -378,6 +563,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}           
   /admin/deleteCourse/{pathId}/{courseId}:
     delete:
       tags:
@@ -401,6 +598,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}            
   /author/dashboard:
     get:
       tags:
@@ -413,6 +622,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}           
   /author/createcourse:
     post:
       tags:
@@ -434,6 +655,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}           
   /author/listcourses:
     get:
       tags:
@@ -459,6 +692,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}           
   /author/listowncourses:
     get:
       tags:
@@ -484,6 +729,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}           
   /author/updateownedcourse/{id}:
     put:
       tags:
@@ -511,6 +768,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}           
   /author/deleteownedcourse/{id}:
     delete:
       tags:
@@ -529,6 +798,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}         
   /author/listenrollrequests:
     get:
       tags:
@@ -541,6 +822,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}   
   /author/updateEnrollmentStatus/{requestId}:
     post:
       tags:
@@ -566,6 +859,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}           
   /author/updateprofile:
     put:
       tags:
@@ -586,6 +891,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}           
   /author/listLearningPaths:
     get:
       tags:
@@ -598,6 +915,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}           
   /author/addCoursetoPath:
     post:
       tags:
@@ -618,6 +947,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}           
   /author/deleteCoursefromPath/{pathId}/{courseId}:
     delete:
       tags:
@@ -641,6 +982,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}           
   /student/dashboard:
     get:
       tags:
@@ -653,7 +1006,19 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /admin/viewcourse:
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}            
+  /student/viewcourse:
     get:
       tags:
         - student > course
@@ -678,6 +1043,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}            
   /student//sendEnrollRequest:
     post:
       tags:
@@ -697,6 +1074,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}            
   /student/readEnrolledCourseContent:
     get:
       tags:
@@ -709,6 +1098,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}            
   /student/unenrollFromCourse:
     post:
       tags:
@@ -728,6 +1129,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}            
   /student//updateProfile:
     put:
       tags:
@@ -748,6 +1161,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}           
   /student/markCourseCompleted:
     post:
       tags:
@@ -767,6 +1192,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}            
   /student/addreview/{courseId}:
     post:
       tags:
@@ -796,6 +1233,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}            
   /student/progress/{courseId}:
     get:
       tags:
@@ -814,6 +1263,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}           
     put:
       tags:
         - student > progress
@@ -838,3 +1299,15 @@ paths:
           description: Successful response
           content:
             application/json: {}
+        '400':
+          description: Bad request
+          content:
+            application/json: {}
+        '401': 
+          description: Unauthorized
+          content:
+            application/json: {}
+        '500' : 
+          description: Internal Server Error
+          content:
+            application/json: {}            
