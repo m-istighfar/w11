@@ -76,6 +76,10 @@ This is a simple e-learning platform API built with Node.js and Express, focusin
 
 ### Schema
 
+<!-- images -->
+
+![Database Schema](./asset/images/db%20schema.png)
+
 #### User Collection (UserSchema)
 
 - `username`: String (unique, required)
