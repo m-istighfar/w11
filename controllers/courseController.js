@@ -200,7 +200,8 @@ exports.deleteOwnCourse = async (req, res) => {
 exports.addReview = async (req, res) => {
   try {
     const courseId = req.params.courseId;
-    const { studentId, rating, review } = req.body;
+    const studentId = req.user.id;
+    const { rating, review } = req.body;
 
     const enrollment = await Enrollment.findOne({
       courseId,

@@ -1209,7 +1209,6 @@ paths:
             schema:
               type: object
               example:
-                studentId: 61234abcde12345678901234
                 rating: 4.5
                 review: >-
                   This course was very informative and well-structured. Highly
