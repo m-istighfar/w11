@@ -233,6 +233,66 @@ node .\helper\generateFakeData.js
 
 ## API Endpoints
 
+### **Authentication Endpoints**
+
+| Method | Endpoint         | Description       |
+| ------ | ---------------- | ----------------- |
+| POST   | `/auth/register` | User Registration |
+| POST   | `/auth/login`    | User Login        |
+
+### **Admin Endpoints**
+
+| Method | Endpoint                                | Description                          |
+| ------ | --------------------------------------- | ------------------------------------ |
+| POST   | `/admin/createUser`                     | Create a new user                    |
+| PUT    | `/admin/updateUser/:id`                 | Update a user's details              |
+| DELETE | `/admin/deleteUser/:id`                 | Delete a user                        |
+| GET    | `/admin/listUsers`                      | List all users                       |
+| POST   | `/admin/assignRole/`                    | Assign a role to a user              |
+| POST   | `/admin/createCourse`                   | Create a new course                  |
+| PUT    | `/admin/updateCourse/:id`               | Update a course                      |
+| DELETE | `/admin/deleteCourse/:id`               | Delete a course                      |
+| GET    | `/admin/listCourses`                    | List all courses                     |
+| GET    | `/admin/dashboard`                      | Get admin dashboard data             |
+| POST   | `/admin/createLearningPath`             | Create a new learning path           |
+| GET    | `/admin/listLearningPaths`              | List all learning paths              |
+| PUT    | `/admin/updateLearningPath/:id`         | Update a learning path               |
+| DELETE | `/admin/deleteLearningPath/:id`         | Delete a learning path               |
+| POST   | `/admin/addCourse`                      | Add a course to a learning path      |
+| DELETE | `/admin/deleteCourse/:pathId/:courseId` | Delete a course from a learning path |
+
+### **Author Endpoints**
+
+| Method | Endpoint                                         | Description                            |
+| ------ | ------------------------------------------------ | -------------------------------------- |
+| POST   | `/author/createCourse`                           | Create a new course                    |
+| GET    | `/author/listCourses`                            | List all courses                       |
+| PUT    | `/author/updateOwnedCourse/:id`                  | Update an owned course                 |
+| DELETE | `/author/deleteOwnedCourse/:id`                  | Delete an owned course                 |
+| GET    | `/author/listEnrollRequests`                     | List all enroll requests               |
+| POST   | `/author/updateEnrollmentStatus/:requestId`      | Update the status of an enroll request |
+| PUT    | `/author/updateProfile`                          | Update author profile                  |
+| GET    | `/author/listowncourses`                         | List own courses                       |
+| GET    | `/author/dashboard`                              | Get author dashboard data              |
+| GET    | `/author/listLearningPaths`                      | List all learning paths                |
+| POST   | `/author/addCoursetoPath`                        | Add a course to a learning path        |
+| DELETE | `/author/deleteCoursefromPath/:pathId/:courseId` | Delete a course from a learning path   |
+
+### **Student Endpoints**
+
+| Method | Endpoint                             | Description                        |
+| ------ | ------------------------------------ | ---------------------------------- |
+| GET    | `/student/viewcourse`                | List all courses                   |
+| POST   | `/student/sendEnrollRequest`         | Send an enrollment request         |
+| GET    | `/student/readEnrolledCourseContent` | Read content of an enrolled course |
+| POST   | `/student/unenrollFromCourse`        | Unenroll from a course             |
+| POST   | `/student/markCourseCompleted`       | Mark a course as completed         |
+| PUT    | `/student/updateProfile`             | Update student profile             |
+| POST   | `/student/addReview/:courseId`       | Add a review for a course          |
+| GET    | `/student/dashboard`                 | Get student dashboard data         |
+| GET    | `/student/progress/:courseId`        | Get progress for a course          |
+| PUT    | `/student/progress/:courseId`        | Update progress for a course       |
+
 For a complete list of API Endpoints and their descriptions, please check the Swagger documentation at `/api-docs`.
 
 ## Contributing
